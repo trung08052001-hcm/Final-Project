@@ -7,7 +7,7 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/textinputPasswordLogin"
+        android:id="@+id/textinputPasswordSignUp"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textinputEmailLogin" />
 
     <ImageView
-        android:id="@+id/imageViewLogin"
+        android:id="@+id/imageViewSignUp"
         android:layout_width="416dp"
         android:layout_height="283dp"
         android:scaleType="fitXY"
@@ -47,7 +47,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSignUp" />
 
     <EditText
         android:id="@+id/textinputEmailLogin"
@@ -75,7 +75,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textinputPasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textinputPasswordSignUp"
         app:srcCompat="@drawable/btn_arraw1" />
 
     <LinearLayout
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonFacebookLogin"
+            android:id="@+id/buttonFacebookSignUp"
             style="android:style/widget.button"
             android:layout_width="0dp"
             android:layout_height="55dp"
@@ -122,14 +122,14 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewRegisterLogin"
+        android:id="@+id/textViewLoginSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview_register"
         android:layout_marginTop="16dp"
-        android:textStyle="bold"
+        android:text="@string/textview_register"
         android:textColor="@color/blue_hex"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
