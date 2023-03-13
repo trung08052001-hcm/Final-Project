@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_hex">#EFF0FC</color>
+    <color name="blue_hex">#3b608c</color>
+    <color name="color_input">#38608C</color>
+    <color name="img_wellcome_login">#6672FF</color>
+
 </resources>

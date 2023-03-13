@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/textinputPasswordLogin"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -18,17 +17,17 @@
         android:drawableStart="@drawable/password"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/input_password"
         android:inputType="textPassword"
-        android:textColorHint="#38608C"
+        android:textColorHint="@color/color_input"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/textinputEmailLogin" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogin"
         android:layout_width="416dp"
         android:layout_height="283dp"
         android:scaleType="fitXY"
@@ -39,19 +38,19 @@
         app:srcCompat="@drawable/top_background1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wellcome\nBack"
+        android:text="@string/wellcomeback"
         android:layout_marginStart="32dp"
-        android:textColor="#6672FF"
+        android:textColor="@color/img_wellcome_login"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/textinputEmailLogin"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
@@ -59,24 +58,24 @@
         android:layout_marginTop="16dp"
         android:drawableStart="@drawable/email"
         android:drawablePadding="16dp"
-        android:hint="Email"
-        android:textColorHint="#38608C"
+        android:hint="@string/input_email"
+        android:textColorHint="@color/color_input"
         android:textSize="18sp"
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/buttonLogin"
         android:layout_width="52dp"
         android:layout_height="49dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toBottomOf="@+id/textinputPasswordLogin"
         app:srcCompat="@drawable/btn_arraw1" />
 
     <LinearLayout
@@ -89,10 +88,10 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/buttonFacebookLogin"
             style="android:style/widget.button"
             android:layout_width="0dp"
             android:layout_height="55dp"
@@ -101,13 +100,13 @@
             android:background="@drawable/btn_background"
             android:drawableEnd="@drawable/facebook"
             android:padding="16dp"
-            android:text="Facebook"
-            android:textColor="#3b608c"
+            android:text="@string/button_facebook"
+            android:textColor="@color/blue_hex"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
+            android:id="@+id/buttonGoogleLogin"
             style="android:style/widget.button"
             android:layout_width="0dp"
             android:layout_height="55dp"
@@ -116,20 +115,20 @@
             android:background="@drawable/btn_background"
             android:drawableEnd="@drawable/google"
             android:padding="16dp"
-            android:text="Google"
-            android:textColor="#3b608c"
+            android:text="@string/button_google"
+            android:textColor="@color/blue_hex"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewRegisterLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Are you new user? register"
+        android:text="@string/textview_register"
         android:layout_marginTop="16dp"
         android:textStyle="bold"
-        android:textColor="#3b608c"
+        android:textColor="@color/blue_hex"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
