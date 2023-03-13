@@ -38,7 +38,7 @@
         app:srcCompat="@drawable/top_background1" />
 
     <TextView
-        android:id="@+id/textViewWelcome"
+        android:id="@+id/CreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wellcomeback"
@@ -66,7 +66,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
+        app:layout_constraintTop_toBottomOf="@+id/CreateAccount" />
 
     <ImageView
         android:id="@+id/buttonLogin"
