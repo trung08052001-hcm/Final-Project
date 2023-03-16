@@ -1,9 +1,11 @@
-package com.example.finalproject
+package com.example.finalproject.screen.Forgotpassword
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import com.example.finalproject.screen.Otp.OtpActivity
+import com.example.finalproject.R
 
 class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

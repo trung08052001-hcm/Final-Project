@@ -12,25 +12,25 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".screen.Forgotpassword.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".NewPasswordActivity"
+            android:name=".screen.NewPassword.NewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".OtpActivity"
+            android:name=".screen.Otp.OtpActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".screen.menu.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".screen.Signup.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".screen.Splash.SplashScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".screen.Login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
