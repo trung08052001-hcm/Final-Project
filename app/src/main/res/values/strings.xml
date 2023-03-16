@@ -12,4 +12,7 @@
     <string name="textview_Login">Login</string>
     <string name="textview_forgot">Forgot Password</string>
     <string name="phone_number">PhoneNumber</string>
+    <string name="otp_verification">Otp Verification</string>
+    <string name="new_password">New Password</string>
+    <string name="new_password_again">Retype Password</string>
 </resources>
