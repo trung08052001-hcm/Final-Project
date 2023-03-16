@@ -8,12 +8,11 @@
 
     <ImageView
         android:id="@+id/imageViewOtp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="337dp"
+        android:layout_width="416dp"
+        android:layout_height="283dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/top_background1" />
@@ -48,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewOtp" />
 
     <ImageView
-        android:id="@+id/imageViewButtonForgot"
+        android:id="@+id/imageViewButtonOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -58,7 +57,7 @@
         app:srcCompat="@drawable/btn_arraw1" />
 
     <TextView
-        android:id="@+id/textView3Forgot"
+        android:id="@+id/textViewForgotOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter the OTP code within the specified time"

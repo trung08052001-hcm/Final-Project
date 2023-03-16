@@ -51,6 +51,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textinputPasswordLogin" />
 
+        <TextView
+            android:id="@+id/textViewSignUpLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="288dp"
+            android:text="@string/textview_Login"
+            android:textColor="@color/blue_hex"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textinputPhoneSignUp" />
+
         <ImageView
             android:id="@+id/imageViewLogin"
             android:layout_width="416dp"
@@ -117,7 +132,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewCreateAccount" />
 
         <ImageView
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonSignUp"
             android:layout_width="52dp"
             android:layout_height="49dp"
             android:layout_marginTop="44dp"
@@ -125,6 +140,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textinputPhoneSignUp"
             app:srcCompat="@drawable/btn_arraw1" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -136,7 +152,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
+            app:layout_constraintTop_toBottomOf="@+id/buttonSignUp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonFacebookLogin"
@@ -169,18 +185,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewSignUpLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/textview_Login"
-            android:textColor="@color/blue_hex"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

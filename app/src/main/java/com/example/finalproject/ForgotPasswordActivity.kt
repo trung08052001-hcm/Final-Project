@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 
-class LoginActivity : AppCompatActivity() {
+class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        var login : ImageView = findViewById(R.id.buttonSignUp)
-        login.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
+        setContentView(R.layout.activity_forgot_password)
+        var btnforgot : ImageView = findViewById(R.id.imageViewForgotpassword)
+        btnforgot.setOnClickListener {
+            val intent = Intent(this, OtpActivity::class.java)
             startActivity(intent)
         }
     }
