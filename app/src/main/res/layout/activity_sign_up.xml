@@ -12,7 +12,7 @@
         tools:context=".SignUpActivity">
 
         <EditText
-            android:id="@+id/textinputPasswordSignUp"
+            android:id="@+id/textinputPasswordLogin"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -49,10 +49,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textinputPasswordSignUp" />
+            app:layout_constraintTop_toBottomOf="@+id/textinputPasswordLogin" />
 
         <ImageView
-            android:id="@+id/imageViewSignUp"
+            android:id="@+id/imageViewLogin"
             android:layout_width="416dp"
             android:layout_height="283dp"
             android:scaleType="fitXY"
@@ -72,7 +72,7 @@
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewSignUp" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
 
         <EditText
             android:id="@+id/textinputEmailLogin"
@@ -89,7 +89,7 @@
             android:inputType="textPersonName"
             android:textColorHint="@color/color_input"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/textinputPasswordSignUp"
+            app:layout_constraintBottom_toTopOf="@+id/textinputPasswordLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonFacebookSignUp"
+                android:id="@+id/buttonFacebookLogin"
                 style="android:style/widget.button"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
@@ -170,7 +170,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textViewLoginSignUp"
+            android:id="@+id/textViewSignUpLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
