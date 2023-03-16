@@ -21,9 +21,6 @@
             android:name=".OtpActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotActivity"
-            android:exported="false" />
-        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
