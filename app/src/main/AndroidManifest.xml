@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".screen.OnboardingScreen.OnboardingScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".screen.Forgotpassword.ForgotPasswordActivity"
             android:exported="false" />
         <activity
