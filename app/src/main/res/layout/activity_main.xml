@@ -7,13 +7,14 @@
     android:background="@color/white_hex"
     tools:context=".MainActivity">
 
+
     <ImageView
-        android:id="@+id/imageViewLogin"
-        android:layout_width="473dp"
-        android:layout_height="807dp"
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yeezy"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/yeezy" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
