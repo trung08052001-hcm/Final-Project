@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".screen.Login.LoginActivity">
 
+
+    <ImageView
+        android:id="@+id/ImgagviewWelcome"
+        android:layout_width="416dp"
+        android:layout_height="283dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background1" />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonFacebookLogin3"
         style="android:style/widget.button"
@@ -22,33 +31,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWelcome"
-        app:layout_constraintVertical_bias="0.48" />
-
-    <ImageView
-        android:id="@+id/imageViewLogin"
-        android:layout_width="416dp"
-        android:layout_height="283dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/top_background1" />
+        app:layout_constraintVertical_bias="0.489" />
 
     <TextView
         android:id="@+id/textViewWelcome"
         android:layout_width="354dp"
         android:layout_height="101dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="@string/wellcomeback"
         android:textColor="@color/img_wellcome_login"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/ImgagviewWelcome" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -97,7 +96,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewSignUpLogin"
+        android:id="@+id/textViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -105,7 +104,9 @@
         android:textColor="@color/blue_hex"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
