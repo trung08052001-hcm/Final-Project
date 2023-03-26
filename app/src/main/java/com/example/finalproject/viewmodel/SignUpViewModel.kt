@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
-class SignUpViewModel: ViewModel() {
+class SignUpViewModel : ViewModel(){
     private var _isSuccessEvent: MutableLiveData<Boolean> = MutableLiveData()
     val isSuccessEvent: LiveData<Boolean>
         get() = _isSuccessEvent
@@ -24,8 +24,7 @@ class SignUpViewModel: ViewModel() {
         sharedPreferences = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
     }
-
-    fun SignUp(context: Context, fullName : String, email: String, password: String) {
+    fun SignUp(context: Context,fullName : String , email: String, password: String) {
         if (fullName.isEmpty()) {
             _isErrorEvent.postValue("Please enter your full name")
             return
@@ -40,7 +39,6 @@ class SignUpViewModel: ViewModel() {
             return
         }
 
-
         editor.putString("fullName", fullName)
         editor.putString("email", email)
         editor.putString("password", password)
@@ -48,7 +46,6 @@ class SignUpViewModel: ViewModel() {
 
         _isSuccessEvent.postValue(true)
     }
-
     private fun isEmailValid(email: String): Boolean {
         val emailPattern = Patterns.EMAIL_ADDRESS
         return emailPattern.matcher(email).matches() && email.endsWith("@gmail.com")

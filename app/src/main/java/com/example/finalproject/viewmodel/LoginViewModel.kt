@@ -35,7 +35,6 @@ class LoginViewModel : ViewModel(){
         }
     }
 
-
     private fun isEmailValid(email: String): Boolean {
         val emailPattern = Patterns.EMAIL_ADDRESS
         return emailPattern.matcher(email).matches() && email.endsWith("@gmail.com")
