@@ -39,13 +39,10 @@ class SignUpViewModel: ViewModel() {
             _isErrorEvent.postValue("Password is invalid")
             return
         }
-
-
         editor.putString("fullName", fullName)
         editor.putString("email", email)
         editor.putString("password", password)
         editor.apply()
-
         _isSuccessEvent.postValue(true)
     }
 
