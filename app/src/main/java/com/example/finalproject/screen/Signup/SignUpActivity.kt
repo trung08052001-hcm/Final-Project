@@ -1,4 +1,4 @@
-package com.example.finalproject
+package com.example.finalproject.screen.Signup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.finalproject.databinding.ActivityLoginBinding
+import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivitySignUpBinding
 import com.example.finalproject.screen.Login.LoginActivity
 import com.example.finalproject.viewmodel.SignUpViewModel
