@@ -1,10 +1,12 @@
 package com.example.finalproject.screen.onboarding
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.example.finalproject.R
+import com.example.finalproject.screen.Welcome.WelcomeActivity
 import com.ramotion.paperonboarding.PaperOnboardingFragment
 import com.ramotion.paperonboarding.PaperOnboardingPage
 
@@ -17,6 +19,11 @@ class OnboardingActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
         val paperOnboardingFragment = PaperOnboardingFragment.newInstance(getDataForOnBoarding())
         val fragmentTransaction = fragmentManager.beginTransaction()
+        paperOnboardingFragment.setOnRightOutListener {
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         fragmentTransaction.add(R.id.fragment_container, paperOnboardingFragment)
         fragmentTransaction.commit()
     }
