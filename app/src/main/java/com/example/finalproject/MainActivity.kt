@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, OnboardingActivity::class.java)
+            val intent = Intent(this, BottomnNaviActivity::class.java)
             startActivity(intent)
         }, 5000)
     }

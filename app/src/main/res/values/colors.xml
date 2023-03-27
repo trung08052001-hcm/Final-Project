@@ -11,5 +11,8 @@
     <color name="blue_hex">#3b608c</color>
     <color name="color_input">#38608C</color>
     <color name="img_wellcome_login">#6672FF</color>
-
+    <color name="home">#5B37B7</color>
+    <color name="search">#C9389D</color>
+    <color name="mess">#E6A919</color>
+    <color name="profile">#1194AA</color>
 </resources>
