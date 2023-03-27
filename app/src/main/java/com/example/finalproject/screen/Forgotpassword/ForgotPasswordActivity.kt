@@ -16,5 +16,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             val intent = Intent(this, OtpActivity::class.java)
             startActivity(intent)
         }
+
     }
+
 }
