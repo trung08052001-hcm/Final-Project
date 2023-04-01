@@ -1,9 +1,11 @@
-package com.example.finalproject
+package com.example.finalproject.screen.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.finalproject.viewmodel.ProfileViewModel
+import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {

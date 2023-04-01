@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.finalproject.screen.Login.LoginActivity
-import com.example.finalproject.screen.onboarding.OnboardingActivity
+import com.example.finalproject.screen.btnaviga.BottomnNaviActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.finalproject
+package com.example.finalproject.viewmodel
 
 import android.content.Context
 import android.content.SharedPreferences

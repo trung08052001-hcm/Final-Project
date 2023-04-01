@@ -1,12 +1,14 @@
-package com.example.finalproject
+package com.example.finalproject.screen.btnaviga
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
+import com.example.finalproject.R
 import com.example.finalproject.screen.Forgotpassword.ForgotPasswordActivity
 import com.example.finalproject.screen.Login.LoginActivity
 import com.example.finalproject.screen.Otp.OtpActivity
+import com.example.finalproject.screen.profile.ProfileActivity
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class BottomnNaviActivity : AppCompatActivity() {
