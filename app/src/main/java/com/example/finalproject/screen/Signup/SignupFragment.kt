@@ -40,7 +40,7 @@ class signupFragment : Fragment() {
         // Observe the isSuccessEvent LiveData
         viewModel.isSuccessEvent.observe(viewLifecycleOwner, {
             if (it) {
-                Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
 //                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
 //                findNavController().navigate(action)
             }

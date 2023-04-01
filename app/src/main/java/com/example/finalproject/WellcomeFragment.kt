@@ -1,17 +1,18 @@
-package com.example.finalproject.screen.Welcome
+package com.example.finalproject
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentWellcomeBinding
 
 
-class wellcomeFragment : Fragment() {
+class WellcomeFragment : Fragment() {
     private lateinit var binding: FragmentWellcomeBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,8 +24,10 @@ class wellcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonWelcomeLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_wellcomeFragment_to_loginFragment)
+            val controller = findNavController()
+            controller.navigate(R.id.action_wellcomeFragment_to_loginFragment)
         }
     }
+
 
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentLoginBinding
 import com.example.finalproject.viewmodel.LoginViewModel
@@ -30,8 +31,7 @@ class LoginFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         viewModel.initSharedPreferences(requireContext())
         binding.txtLogin.setOnClickListener{
-//            val intent = Intent(requireContext(), SignUpActivity::class.java)
-//            startActivity(intent)
+            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
         binding.buttonLogin.setOnClickListener {
             val email = binding.textinputEmailLogin.text.toString()
@@ -44,6 +44,7 @@ class LoginFragment : Fragment() {
 //                val intent = Intent(requireContext(), OtpActivity::class.java)
 //                startActivity(intent)
 //                requireActivity().finish()
+
             }
         })
 
