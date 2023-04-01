@@ -32,19 +32,19 @@
             app:destination="@id/signupFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signupFragment"
-        android:name="com.example.finalproject.screen.Signup.signupFragment"
-        android:label="signupFragment" >
-        <action
-            android:id="@+id/action_signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/wellcomeFragment"
         android:name="com.example.finalproject.WellcomeFragment"
         android:label="WellcomeFragment" >
         <action
             android:id="@+id/action_wellcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.finalproject.screen.Signup.SignupFragment"
+        android:label="SignupFragment" >
+        <action
+            android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

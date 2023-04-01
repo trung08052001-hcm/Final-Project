@@ -1,56 +1,74 @@
 package com.example.finalproject.screen.Signup
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentSignupBinding
-import com.example.finalproject.viewmodel.SignUpViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 
-class signupFragment : Fragment() {
-    private lateinit var binding: FragmentSignupBinding
-    private lateinit var viewModel: SignUpViewModel
+class SignupFragment : Fragment() {
+    private lateinit var mAuth: FirebaseAuth
+    private var _binding: FragmentSignupBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment using DataBinding
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
-
-        // Get the ViewModel
-        viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
-        viewModel.initSharedPreferences(requireContext())
-
-        // Set the click listener for the sign up button
-        binding.buttonSignUp.setOnClickListener {
-            val fullname = binding.inputnameSignup.text.toString().trim()
-            val email = binding.edtEmailSignUp.text.toString().trim()
-            val password = binding.edtPasswordSignUp.text.toString().trim()
-            val phone = binding.edtPhoneSignUp.text.toString().trim()
-            viewModel.SignUp(requireContext(), fullname, email, password)
-        }
-
-        // Observe the isSuccessEvent LiveData
-        viewModel.isSuccessEvent.observe(viewLifecycleOwner, {
-            if (it) {
-//                Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
-//                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
-//                findNavController().navigate(action)
-            }
-        })
-
-        // Observe the isErrorEvent LiveData
-        viewModel.isErrorEvent.observe(viewLifecycleOwner, {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        })
-
+        _binding = FragmentSignupBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mAuth = FirebaseAuth.getInstance()
+
+        binding.buttonSignUp.setOnClickListener {
+            val email = binding.edtEmailSignUp.text.toString()
+            val password = binding.edtPasswordSignUp.text.toString()
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "createUserWithEmail:success")
+                            val user = mAuth.currentUser
+                            Toast.makeText(
+                                requireContext(), "Signup successful.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            val controller = findNavController()
+                            controller.navigate(R.id.action_signupFragment_to_loginFragment)
+                        } else {
+                            Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                requireContext(), "Signup failed. ${task.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            } else {
+                Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+        private const val TAG = "SignupFragment"
+    }
 }
+

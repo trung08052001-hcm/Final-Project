@@ -1,57 +1,70 @@
 package com.example.finalproject.screen.Login
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentLoginBinding
 import com.example.finalproject.viewmodel.LoginViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [loginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        viewModel.initSharedPreferences(requireContext())
-        binding.txtLogin.setOnClickListener{
-            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mAuth = FirebaseAuth.getInstance()
+        binding.txtLogin.setOnClickListener {
+            val controller = findNavController()
+            controller.navigate(R.id.action_loginFragment_to_signupFragment)
         }
         binding.buttonLogin.setOnClickListener {
             val email = binding.textinputEmailLogin.text.toString()
             val password = binding.textinputPasswordLogin.text.toString()
-            viewModel.checkEmailAndPassword(requireContext(), email, password)
-        }
 
-        viewModel.isSuccessEvent.observe(viewLifecycleOwner, { success ->
-            if (success) {
-//                val intent = Intent(requireContext(), OtpActivity::class.java)
-//                startActivity(intent)
-//                requireActivity().finish()
-
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "signInWithEmail:success")
+                            val user = mAuth.currentUser
+                            Toast.makeText(
+                                requireContext(), "Login successful.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                requireContext(), "Login failed. ${task.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            } else {
+                Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
+    }
 
-        viewModel.isErrorEvent.observe(viewLifecycleOwner, { error ->
-//            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-        })
-
-        return binding.root
+    companion object {
+        private const val TAG = "LoginFragment"
     }
 }
