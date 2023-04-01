@@ -5,45 +5,52 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.finalproject.R
+import com.example.finalproject.databinding.FragmentSignupBinding
+import com.example.finalproject.viewmodel.SignUpViewModel
 
 
 class signupFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
+    private lateinit var binding: FragmentSignupBinding
+    private lateinit var viewModel: SignUpViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signup, container, false)
-    }
+        // Inflate the layout for this fragment using DataBinding
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment signupFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            signupFragment().apply {
-                arguments = Bundle().apply {
+        // Get the ViewModel
+        viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        viewModel.initSharedPreferences(requireContext())
 
-                }
+        // Set the click listener for the sign up button
+        binding.buttonSignUp.setOnClickListener {
+            val fullname = binding.inputnameSignup.text.toString().trim()
+            val email = binding.edtEmailSignUp.text.toString().trim()
+            val password = binding.edtPasswordSignUp.text.toString().trim()
+            val phone = binding.edtPhoneSignUp.text.toString().trim()
+            viewModel.SignUp(requireContext(), fullname, email, password)
+        }
+
+        // Observe the isSuccessEvent LiveData
+        viewModel.isSuccessEvent.observe(viewLifecycleOwner, {
+            if (it) {
+                Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
+//                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+//                findNavController().navigate(action)
             }
+        })
+
+        // Observe the isErrorEvent LiveData
+        viewModel.isErrorEvent.observe(viewLifecycleOwner, {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        })
+
+        return binding.root
     }
 }

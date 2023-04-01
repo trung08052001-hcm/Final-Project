@@ -12,36 +12,6 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".screen.btnaviga.BottomnNaviActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.onboarding.OnboardingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.profile.ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.Signup.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.Welcome.WelcomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.Forgotpassword.ForgotPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.NewPassword.NewPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.Otp.OtpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.Splash.SplashScreenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screen.Login.LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
