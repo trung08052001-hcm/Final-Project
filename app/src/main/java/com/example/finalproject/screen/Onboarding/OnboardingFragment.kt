@@ -21,7 +21,7 @@ class onboardingFragment : Fragment() {
         val paperOnboardingFragment = PaperOnboardingFragment.newInstance(getDataForOnBoarding())
         val fragmentTransaction = fragmentManager.beginTransaction()
         paperOnboardingFragment.setOnRightOutListener {
-//            findNavController().navigate(R.id.)
+            findNavController().navigate(R.id.action_wellcomeFragment_to_loginFragment)
         }
         fragmentTransaction.add(R.id.fragment_container, paperOnboardingFragment)
         fragmentTransaction.commit()
