@@ -50,6 +50,7 @@ class LoginFragment : Fragment() {
                                 requireContext(), "Login successful.",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            //navigation
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.exception)
                             Toast.makeText(
