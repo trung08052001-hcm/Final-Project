@@ -206,13 +206,13 @@ class MainFragment : Fragment(R.layout.fragment_mainpage),
     }
     override fun onClickProduct(item: ShoeDisplayModel) {
 
-//        val direction = MainFragmentDirections
-//            .actionMainFragment2ToDetailsFragment(
-//                item.id!!
-//            )
-//
-//        Navigation.findNavController(requireView())
-//            .navigate(direction)
+        val direction = MainFragmentDirections
+            .actionMainFragmentToDetailsFragment(
+                item.id!!
+            )
+
+        Navigation.findNavController(requireView())
+            .navigate(direction)
 
 
     }
