@@ -15,4 +15,7 @@
     <color name="search">#C9389D</color>
     <color name="mess">#E6A919</color>
     <color name="profile">#1194AA</color>
+    <color name="grayishWhite">#F1EDED</color>
+    <color name="greyishtext">#474444</color>
+    <color name="statusbar">#ffffff</color>
 </resources>

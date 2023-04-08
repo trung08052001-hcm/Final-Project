@@ -47,7 +47,7 @@ class SignupFragment : Fragment() {
                             ).show()
 
                             val controller = findNavController()
-                            controller.navigate(R.id.action_signupFragment_to_loginFragment)
+//                            controller.navigate(R.id.action_signupFragment_to_loginFragment)
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(

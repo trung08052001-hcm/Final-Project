@@ -77,7 +77,7 @@ class WellcomeFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
-                    findNavController().navigate(R.id.action_wellcomeFragment_to_homeFragment)
+//                    findNavController().navigate(R.id.action_wellcomeFragment_to_homeFragment)
                     // TODO: navigate to next screen
                 } else {
                     Log.w(TAG, "firebaseAuthWithGoogle:error", task.exception)

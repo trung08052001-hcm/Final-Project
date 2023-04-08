@@ -2,58 +2,236 @@ package com.example.finalproject
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+
 import android.view.View
-import android.view.ViewGroup
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import android.widget.Button
+import android.widget.Toast
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.finalproject.Extensions.toast
+import com.example.finalproject.Models.LikeModel
+import com.example.finalproject.Models.ShoeDisplayModel
+import com.example.finalproject.databinding.FragmentMainpageBinding
+import com.example.finalproject.rvadapters.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class MainFragment : Fragment(R.layout.fragment_mainpage),
+    CategoryOnClickInterface,
+    ProductOnClickInterface, LikeOnClickInterface {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    private lateinit var binding: FragmentMainpageBinding
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var productList: ArrayList<ShoeDisplayModel>
+    private lateinit var categoryList: ArrayList<String>
+    private lateinit var productsAdapter: ShoeDisplayAdapter
+    private lateinit var categoryAdapter: MainCategoryAdapter
+    private lateinit var auth: FirebaseAuth
+    private var likeDBRef = Firebase.firestore.collection("LikedProducts")
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding = FragmentMainpageBinding.bind(view)
+        categoryList = ArrayList()
+        productList = ArrayList()
+        databaseReference = FirebaseDatabase.getInstance().getReference("products")
+        auth = FirebaseAuth.getInstance()
+
+
+        // region implements category Recycler view
+
+        categoryList.add("Trending")
+        binding.rvMainCategories.setHasFixedSize(true)
+        val categoryLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        binding.rvMainCategories.layoutManager = categoryLayoutManager
+        categoryAdapter = MainCategoryAdapter(categoryList, this)
+        binding.rvMainCategories.adapter = categoryAdapter
+        setCategoryList()
+
+        // endregion implements category Recycler view
+
+
+        // region implements products Recycler view
+
+        val productLayoutManager = GridLayoutManager(context, 2)
+        productsAdapter = ShoeDisplayAdapter(requireContext(), productList, this,this)
+        binding.rvMainProductsList.layoutManager = productLayoutManager
+        binding.rvMainProductsList.adapter = productsAdapter
+        setProductsData()
+        // endregion implements products Recycler view
+
+
+        binding.bnvMain.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.mainFragment -> {
+                    Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
+                        .navigate(R.id.action_mainFragment_self)
+                    true
                 }
+                R.id.likeFragment -> {
+//                    requireActivity().toast("Like Page coming Soon")
+                    Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
+                        .navigate(R.id.action_mainFragment_to_likeFragment2)
+                    true
+                }
+                R.id.cartFragment -> {
+
+                    Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
+                        .navigate(R.id.action_mainFragment_to_cartFragment)
+
+                    true
+                }
+
+                else -> false
+
             }
+
+        }
+
+
     }
+
+    private fun setCategoryList() {
+
+        val valueEvent = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                categoryList.clear()
+                categoryList.add("Trending")
+
+                if (snapshot.exists()) {
+                    for (dataSnapshot in snapshot.children) {
+                        val products = dataSnapshot.getValue(ShoeDisplayModel::class.java)
+
+                        categoryList.add(products!!.brand!!)
+
+                    }
+
+                    categoryAdapter.notifyDataSetChanged()
+                }
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "$error", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+
+        databaseReference.addValueEventListener(valueEvent)
+
+
+
+
+    }
+
+
+    private fun setProductsData() {
+
+        val valueEvent = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                productList.clear()
+
+                if (snapshot.exists()) {
+                    for (dataSnapshot in snapshot.children) {
+                        val products = dataSnapshot.getValue(ShoeDisplayModel::class.java)
+                        productList.add(products!!)
+                    }
+
+                    productsAdapter.notifyDataSetChanged()
+                }
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "$error", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        databaseReference.addValueEventListener(valueEvent)
+
+    }
+
+    override fun onClickCategory(button: Button) {
+        binding.tvMainCategories.text = button.text
+
+        val valueEvent = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                productList.clear()
+
+                if (snapshot.exists()) {
+                    for (dataSnapshot in snapshot.children) {
+                        val products = dataSnapshot.getValue(ShoeDisplayModel::class.java)
+
+                        if (products!!.brand == button.text) {
+                            productList.add(products)
+                        }
+
+                        if (button.text == "Trending") {
+                            productList.add(products)
+                        }
+
+                    }
+
+                    productsAdapter.notifyDataSetChanged()
+                }
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "$error", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        databaseReference.addValueEventListener(valueEvent)
+
+
+    }
+    override fun onClickProduct(item: ShoeDisplayModel) {
+
+//        val direction = MainFragmentDirections
+//            .actionMainFragment2ToDetailsFragment(
+//                item.id!!
+//            )
+//
+//        Navigation.findNavController(requireView())
+//            .navigate(direction)
+
+
+    }
+
+
+
+
+    override fun onClickLike(item: ShoeDisplayModel) {
+
+        likeDBRef
+            .add(LikeModel(item.id , auth.currentUser!!.uid , item.brand , item.description , item.imageUrl , item.name ,item.price))
+            .addOnSuccessListener {
+                requireActivity().toast("Added to Liked Items")
+            }
+            .addOnFailureListener {
+                requireActivity().toast("Failed to Add to Liked")
+            }
+
+    }
+
+
 }

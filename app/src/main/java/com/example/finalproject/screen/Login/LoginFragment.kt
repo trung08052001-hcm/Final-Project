@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentLoginBinding
+
 import com.example.finalproject.viewmodel.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         binding.txtLogin.setOnClickListener {
             val controller = findNavController()
-            controller.navigate(R.id.action_loginFragment_to_signupFragment)
+//            controller.navigate(R.id.action_loginFragment_to_signupFragment)
         }
         binding.buttonLogin.setOnClickListener {
             val email = binding.textinputEmailLogin.text.toString()
