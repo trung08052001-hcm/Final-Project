@@ -39,7 +39,12 @@ class WellcomeFragment : Fragment() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-
+        binding.buttonWelcomeLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_wellcomeFragment_to_loginFragment)
+        }
+        binding.textViewSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_wellcomeFragment_to_signupFragment)
+        }
         binding.buttonGoogleLogin.setOnClickListener {
             signInGoogle()
         }
@@ -77,7 +82,7 @@ class WellcomeFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
-//                    findNavController().navigate(R.id.action_wellcomeFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_wellcomeFragment_to_mainFragment)
                     // TODO: navigate to next screen
                 } else {
                     Log.w(TAG, "firebaseAuthWithGoogle:error", task.exception)

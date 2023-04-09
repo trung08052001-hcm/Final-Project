@@ -35,7 +35,7 @@ class LoginFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         binding.txtLogin.setOnClickListener {
             val controller = findNavController()
-//            controller.navigate(R.id.action_loginFragment_to_signupFragment)
+            controller.navigate(R.id.action_loginFragment_to_signupFragment)
         }
         binding.buttonLogin.setOnClickListener {
             val email = binding.textinputEmailLogin.text.toString()
@@ -51,7 +51,7 @@ class LoginFragment : Fragment() {
                                 requireContext(), "Login successful.",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            //navigation
+                            findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.exception)
                             Toast.makeText(
