@@ -30,6 +30,10 @@ class SignupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mAuth = FirebaseAuth.getInstance()
+        binding.txtLogin.setOnClickListener {
+            val controller = findNavController()
+            controller.navigate(R.id.action_signupFragment_to_loginFragment)
+        }
 
         binding.buttonSignUp.setOnClickListener {
             val email = binding.edtEmailSignUp.text.toString()
@@ -47,7 +51,7 @@ class SignupFragment : Fragment() {
                             ).show()
 
                             val controller = findNavController()
-//                            controller.navigate(R.id.action_signupFragment_to_loginFragment)
+                            controller.navigate(R.id.action_signupFragment_to_loginFragment)
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(

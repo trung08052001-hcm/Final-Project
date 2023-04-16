@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentLoginBinding
 
-import com.example.finalproject.viewmodel.LoginViewModel
+
 import com.google.firebase.auth.FirebaseAuth
 
 
