@@ -30,30 +30,24 @@ class onboardingFragment : Fragment() {
 
     private fun getDataForOnBoarding(): ArrayList<PaperOnboardingPage> {
         val src1 = PaperOnboardingPage(
-            "hotel",
-            "all hoterl and hostels are",
-            Color.parseColor("#ffb174"),
-            R.drawable.facebook,
-            R.drawable.google
+            "Banking",
+            "Safety and Security",
+            Color.parseColor("#C0C0C0"),
+            R.drawable.banks,
+            R.drawable.key
         )
         val src2 = PaperOnboardingPage(
-            "12312",
-            "all hoterl 13123123123 hostels are",
-            Color.parseColor("#ffb174"),
-            R.drawable.google,
-            R.drawable.facebook
+            "Shop",
+            "Quick Convenience",
+            Color.parseColor("#FFDAB9"),
+            R.drawable.stores,
+            R.drawable.shopping_cart
         )
-        val src3 = PaperOnboardingPage(
-            "67",
-            "all hoterl and 323232323 are",
-            Color.parseColor("#ffb174"),
-            R.drawable.facebook,
-            R.drawable.facebook
-        )
+
         val elements = ArrayList<PaperOnboardingPage>()
         elements.add(src1)
         elements.add(src2)
-        elements.add(src3)
+
         return elements
     }
 }
