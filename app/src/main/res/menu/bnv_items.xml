@@ -20,7 +20,7 @@
         android:title="CartPage" />
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/logoutFragment"
         android:enabled="true"
         android:icon="@drawable/logout_svg"
         android:title="ProfilePage" />

@@ -90,7 +90,13 @@ class MainFragment : Fragment(R.layout.fragment_mainpage),
 
                     true
                 }
+                R.id.logoutFragment -> {
+                    auth.signOut()
+                    Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
+                        .navigate(R.id.action_mainFragment_to_wellcomeFragment)
 
+                    true
+                }
                 else -> false
 
             }

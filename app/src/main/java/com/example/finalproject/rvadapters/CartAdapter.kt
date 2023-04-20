@@ -12,9 +12,9 @@ import com.example.finalproject.databinding.CartproductItemBinding
 
 class CartAdapter(
     private val context : Context,
-    private val list:ArrayList<CartModel>,
+    private val list:ArrayList<CartModel> ,
     private val onLongClickRemove: OnLongClickRemove
-    ):RecyclerView.Adapter<CartAdapter.ViewHolder>()  {
+):RecyclerView.Adapter<CartAdapter.ViewHolder>()  {
 
 
 

@@ -1,6 +1,4 @@
 package com.example.finalproject
-
-
 import android.graphics.Color
 import android.os.Bundle
 
@@ -89,8 +87,8 @@ class CartFragment : Fragment(R.layout.fragment_cartpage), CartAdapter.OnLongCli
 
 
                     cartList.add(cartProduct)
-                    subTotalPrice += cartProduct.price!!.toInt()
-                    totalPrice += cartProduct.price!!.toInt()
+//                    subTotalPrice += cartProduct.price!!.toInt()
+//                    totalPrice += cartProduct.price!!.toInt()
                     binding.tvLastSubTotalprice.text = subTotalPrice.toString()
                     binding.tvLastTotalPrice.text = totalPrice.toString()
                     binding.tvLastSubTotalItems.text = "SubTotal Items(${cartList.size})"
