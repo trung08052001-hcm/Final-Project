@@ -79,32 +79,33 @@ class CartFragment : Fragment(R.layout.fragment_cartpage), CartAdapter.OnLongCli
 
 
     private fun retrieveCartItems() {
-
         orderDatabaseReference
-            .whereEqualTo("uid",auth.currentUser!!.uid)
+            .whereEqualTo("uid", auth.currentUser!!.uid)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 for (item in querySnapshot) {
                     val cartProduct = item.toObject<CartModel>()
 
-
-                    cartList.add(cartProduct)
-                    subTotalPrice += cartProduct.price!!.toInt()
-                    totalPrice += cartProduct.price!!.toInt()
-                    binding.tvLastSubTotalprice.text = subTotalPrice.toString()
-                    binding.tvLastTotalPrice.text = totalPrice.toString()
-                    binding.tvLastSubTotalItems.text = "SubTotal Items(${cartList.size})"
-                    adapter.notifyDataSetChanged()
-
-
+                    // Kiểm tra nếu chuỗi giá trị price là rỗng hoặc không hợp lệ
+                    val priceString = cartProduct.price
+                    if (priceString.isNullOrEmpty() || !priceString.matches(Regex("\\d+"))) {
+                        // Xử lý lỗi ở đây, ví dụ: bỏ qua hoặc gán giá trị mặc định
+                    } else {
+                        // Chuyển đổi chuỗi thành số nguyên nếu nó hợp lệ
+                        val priceInt = priceString.toInt()
+                        cartList.add(cartProduct)
+                        subTotalPrice += priceInt
+                        totalPrice += priceInt
+                        binding.tvLastSubTotalprice.text = subTotalPrice.toString()
+                        binding.tvLastTotalPrice.text = totalPrice.toString()
+                        binding.tvLastSubTotalItems.text = "SubTotal Items(${cartList.size})"
+                        adapter.notifyDataSetChanged()
+                    }
                 }
-
             }
-            .addOnFailureListener{
+            .addOnFailureListener {
                 requireActivity().toast(it.localizedMessage!!)
             }
-
-
     }
 
     override fun onLongRemove(item: CartModel , position:Int) {
