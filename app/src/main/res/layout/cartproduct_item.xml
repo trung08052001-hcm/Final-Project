@@ -128,6 +128,15 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="VND"
+            app:layout_constraintStart_toEndOf="@+id/tvCartProductPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvCartProductName" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

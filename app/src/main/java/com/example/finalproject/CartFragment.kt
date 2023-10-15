@@ -28,7 +28,7 @@ class CartFragment : Fragment(R.layout.fragment_cartpage), CartAdapter.OnLongCli
     private lateinit var auth: FirebaseAuth
     private lateinit var adapter: CartAdapter
     private var subTotalPrice = 0
-    private var totalPrice = 240
+    private var totalPrice = 240000
 
     private var orderDatabaseReference = Firebase.firestore.collection("orders")
 
@@ -63,7 +63,7 @@ class CartFragment : Fragment(R.layout.fragment_cartpage), CartAdapter.OnLongCli
 
         binding.btnCartCheckout.setOnClickListener {
 
-            requireActivity().toast("Whooooa!! You've Ordered Products worth ${totalPrice}\n Your Product will be delivered in next 7 days")
+            requireActivity().toast("Whooooa!! You've Ordered Products worth ${totalPrice}\n VND Your Product will be delivered in next 7 days")
             cartList.clear()
             binding.tvLastSubTotalprice.text ="0"
             binding.tvLastTotalPrice.text ="Min 1 product is Required"
