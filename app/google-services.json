@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989476273342",
+    "project_id": "final-project-bfa50",
+    "storage_bucket": "final-project-bfa50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989476273342:android:5e5b6a5a47edd2b85a32ef",
+        "android_client_info": {
+          "package_name": "com.example.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989476273342-u3eptvspu7748669bjspkpglbgnglmlc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAMeCX_FC5mJOvtrsjt5nNAhi7a1EAX3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989476273342-u3eptvspu7748669bjspkpglbgnglmlc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
