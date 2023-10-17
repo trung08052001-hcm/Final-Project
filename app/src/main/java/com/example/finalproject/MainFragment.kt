@@ -90,6 +90,13 @@ class MainFragment : Fragment(R.layout.fragment_mainpage),
 
                     true
                 }
+                R.id.profileFragment -> {
+
+                    Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
+                        .navigate(R.id.action_mainFragment_to_profileFragment2)
+
+                    true
+                }
 
                 else -> false
 

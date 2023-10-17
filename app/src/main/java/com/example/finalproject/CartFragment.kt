@@ -63,10 +63,10 @@ class CartFragment : Fragment(R.layout.fragment_cartpage), CartAdapter.OnLongCli
 
         binding.btnCartCheckout.setOnClickListener {
 
-            requireActivity().toast("Whooooa!! You've Ordered Products worth ${totalPrice}\n VND Your Product will be delivered in next 7 days")
+            requireActivity().toast("Kiểm tra Email về đơn đặt hàng của khách hàng và thanh toán về đơn hàng ")
             cartList.clear()
             binding.tvLastSubTotalprice.text ="0"
-            binding.tvLastTotalPrice.text ="Min 1 product is Required"
+            binding.tvLastTotalPrice.text ="Mua ít nhát 1 sản phẩm"
             binding.tvLastTotalPrice.setTextColor(Color.RED)
             // TODO: remove the data of the Products from the fireStore after checkout or insert a boolean isDelivered
             adapter.notifyDataSetChanged()
